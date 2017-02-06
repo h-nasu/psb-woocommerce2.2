@@ -219,6 +219,8 @@ function woocommerce_paysbuy_init() {
 					}
 					else if ($result == '02'){
 						$order->update_status('on-hold', __('Awaiting Counter Service payment', 'woothemes'));
+						// Reduce stock levels
+						$order->reduce_order_stock();
 						$woocommerce->cart->empty_cart();
 					}
 				}
